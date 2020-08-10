@@ -1,0 +1,30 @@
+# suppliment and override build definitions for CUDA 10
+
+# set directory default for TCB file system, override by user config
+# XXX need to update CUDA installation on MacOS build box
+#CUDADIR=/Developer/NVIDIA/CUDA-7.0
+
+# limit CUDADLINKOPTS to architectures available in libcufft_static
+# XXX thought CUDADLINKOPTS was needed only for Linux
+
+CUDADLINKOPTS = \
+  -gencode arch=compute_30,code=sm_30 \
+  -gencode arch=compute_35,code=sm_35 \
+  -gencode arch=compute_50,code=sm_50 \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_75,code=sm_75 \
+  -gencode arch=compute_75,code=compute_75
+
+CUDAGENCODE = \
+  -gencode arch=compute_30,code=sm_30 \
+  -gencode arch=compute_35,code=sm_35 \
+  -gencode arch=compute_37,code=sm_37 \
+  -gencode arch=compute_50,code=sm_50 \
+  -gencode arch=compute_52,code=sm_52 \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_61,code=sm_61 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_75,code=sm_75 \
+  -gencode arch=compute_75,code=compute_75
+

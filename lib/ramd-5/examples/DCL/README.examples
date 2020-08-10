@@ -1,0 +1,27 @@
+RAMD simulations example README
+--------------------------------------------
+
+The example provided are the RAMD simulations 
+of (R)-2,3-dichloropropane-1-ol (DCL) exit from the active site of haloalkane wild type dehalogenase DhaA (PDBid 1CQW),
+obtained using NAMD, applying Berendsen temperature control.
+
+The simulations are based on the work described in:
+Klvana, M., Pavlova, M., Koudelakova, T., Chaloupkova, R., Dvorak, P., Prokop, Z.,Stsiapanava, A.,
+Kuty, M., Kuta-Smatanova, I., Dohnalek, J., Kulhanek, P., Wade, R.C., Damborsky, J., 2009:
+Pathways and Mechanisms for Product Release in the Engineered Haloalkane Dehalogenases 
+Explored using Classical and Random Acceleration Molecular Dynamics Simulations.
+Journal of Molecular Biology 392: 1339-1356.
+
+Please note that in the example provided here the force constant applied on the ligand
+has been increased relative to the values used in the original paper.
+This is to encourage a faster exit of the ligand in these test runs.
+In any serious application of this technique, it is necessary to adjust the force constant to a suitable value,
+depending on the mass of the ligand and on the system under study, 
+so that the structure of the system is not disrupted by applying the additional force.
+
+For running the examples, a bash scripts are provided: run_ramd_example.sh. 
+The scripts should be run in this directory from the command line (e.g. './run_ramd_exampl.sh >& run_ramd.log &')
+The output is stored in the 'ramd_output' directory. 
+
+---
+Link to the RAMD project page: https://projects.h-its.org/mcm/software/ramd

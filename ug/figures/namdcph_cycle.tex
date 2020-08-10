@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage{fancyhdr}\thispagestyle{empty}
+\usepackage{tikz}
+\usepackage{chemfig}
+
+\topmargin      0.1in
+\oddsidemargin  0in
+\evensidemargin 0in
+\textheight     8.80in
+\textwidth      6.50in
+\marginparsep   0.25cm
+\headheight     0in
+\headsep        0in
+
+% convenience command for drawing a box around text
+\newcommand\simbox[2][]{\tikz[overlay]\node[fill=blue!20,inner sep=2pt,
+    anchor=text, rectangle, rounded corners=1mm,#1] {#2};\phantom{#2}}
+
+\begin{document}
+
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\schemestart
+  \simbox{E-R$_1$H:R$_2$H}
+  \arrow{<=>[$-$H$^{+}$]}
+  \simbox{E-R$_1^-$:R$_2$H}
+  \arrow{<=>[*0$-$H$^{+}$]}[-90]
+  \simbox{E-R$_1^-$:R$_2^-$}
+  \arrow{<=>[$-$H$^{+}$]}[180]
+  \simbox{E-R$_1$H:R$_2^-$}
+  \arrow{<=>[*0$-$H$^{+}$]}[90]
+\schemestop
+\\[8pt]
+\textbf{conventional MD}
+\end{center}
+\end{minipage}
+~
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\simbox{\schemestart
+  E-R$_1$H:R$_2$H
+  \arrow{<=>[$-$H$^{+}$]}
+  E-R$_1^-$:R$_2$H
+  \arrow{<=>[*0$-$H$^{+}$]}[-90]
+  E-R$_1^-$:R$_2^-$
+  \arrow{<=>[$-$H$^{+}$]}[180]
+  E-R$_1$H:R$_2^-$
+  \arrow{<=>[*0$-$H$^{+}$]}[90]
+\schemestop}
+\\[8pt]
+\textbf{constant-pH MD}
+\end{center}
+\end{minipage}
+
+\end{document}

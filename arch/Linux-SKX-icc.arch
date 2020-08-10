@@ -1,0 +1,22 @@
+NAMD_ARCH = Linux-x86_64
+CHARMARCH = multicore-linux-x86_64-iccstatic
+
+FLOATOPTS = -ip -O3 -xCORE-AVX512 -qopt-zmm-usage=high -fp-model fast=2 -no-prec-div -qoverride-limits -DNAMD_DISABLE_SSE -qopenmp-simd
+
+CXX = icpc -std=c++11 -DNAMD_KNL
+CXXOPTS = -static-intel -O2 $(FLOATOPTS)
+CXXNOALIASOPTS = -O3 -fno-alias $(FLOATOPTS) -qopt-report-phase=loop,vec -qopt-report=4
+CXXCOLVAROPTS = -O2 -ip
+
+CC = icc
+COPTS = -static-intel -O2 $(FLOATOPTS)
+
+
+loaded_modules := $(subst :, ,$(LOADEDMODULES))
+
+module := $(filter intel/17.0%,$(loaded_modules))
+ifeq (,$(module))
+else
+  $(error found module $(module) for buggy Intel 17.0 compiler)
+endif
+

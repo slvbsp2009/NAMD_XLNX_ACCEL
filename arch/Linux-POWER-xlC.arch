@@ -1,0 +1,13 @@
+# IBM POWER updated compiler flags and math libraries from Sameer
+
+NAMD_ARCH = Linux-POWER
+CHARMARCH = pami-linux-ppc64le-smp
+
+CXX = xlC_r -w -std=c++11
+CXXOPTS = -O3 -qhot -qaggrcopy=nooverlap -qalias=ansi -qarch=auto -qtune=auto -qfloat=rsqrt -DARCH_POWERPC
+CXXNOALIASOPTS = -O3 -qaggrcopy=nooverlap -qalias=noallptrs -qarch=auto -qtune=auto -qfloat=rsqrt -DARCH_POWERPC
+CXXTHREADOPTS = -O3 -qhot -qstrict -qaggrcopy=nooverlap -qalias=ansi -qarch=auto -qtune=auto -qfloat=rsqrt -DARCH_POWERPC
+CC = xlc_r -w
+COPTS = -O4 -qarch=auto -qtune=auto
+
+MATHLIBS = -lmass -lmassv -lnuma

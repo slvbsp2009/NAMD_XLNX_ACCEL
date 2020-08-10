@@ -1,0 +1,4 @@
+The usage of REST2 Tcl script is the same with other replica exchange samples
+in lib/replica directory.  Please follow the README.txt file in lib/replica
+directory for details about job launching and trajectory postprocessing.
+

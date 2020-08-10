@@ -1,0 +1,9 @@
+# suppliment and override build definitions for CUDA 9
+
+# Just stick to major compute capabilities, GeForce probably does not matter
+
+CUDAGENCODE = \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_70,code=compute_70
+

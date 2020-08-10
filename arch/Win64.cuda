@@ -1,0 +1,16 @@
+# set CUDA base build definitions here
+# must also include *.cuda# file for major version #
+
+CUDAINCL=-I$(CUDADIR)/include
+CUBDIR=`cygpath -d .rootdir/cub`
+CUBINCL=-I$(CUBDIR)
+CUDALIB=-L$(CUDADIR)/lib/x64 -lcudart_static -lcufft
+CUDASODIR=$(CUDADIR)/bin
+CUDAFLAGS=-DNAMD_CUDA
+CUDAOBJS=$(CUDAOBJSRAW)
+NATIVEPATH=cygpath -d
+CUDA=$(CUDAFLAGS) -I. $(CUBINCL) $(CUDAINCL)
+CUDACC=$(CUDADIR)/bin/nvcc
+
+CUDACCOPTS=-DWIN32 -DWIN64 --keep --keep-dir obj -O3 --maxrregcount 48 $(CUDAGENCODE) -m64 $(CUDA) -use_fast_math
+

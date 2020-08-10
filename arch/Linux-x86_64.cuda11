@@ -1,0 +1,30 @@
+# suppliment and override build definitions for CUDA 11
+
+# set directory default for TCB file system, override by user config
+CUDADIR=/usr/local/encap/cuda-11.0ea
+
+# CUDA 11 no longer supports compute capability 3.0
+# CUDA 11 has deprecated compute capability 3.x and 5.x
+# limit CUDADLINKOPTS to architectures available in libcufft_static
+
+CUDADLINKOPTS = \
+  -gencode arch=compute_35,code=sm_35 \
+  -gencode arch=compute_50,code=sm_50 \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_75,code=sm_75 \
+  -gencode arch=compute_80,code=sm_80 \
+  -gencode arch=compute_80,code=compute_80
+
+CUDAGENCODE = \
+  -gencode arch=compute_35,code=sm_35 \
+  -gencode arch=compute_37,code=sm_37 \
+  -gencode arch=compute_50,code=sm_50 \
+  -gencode arch=compute_52,code=sm_52 \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_61,code=sm_61 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_75,code=sm_75 \
+  -gencode arch=compute_80,code=sm_80 \
+  -gencode arch=compute_80,code=compute_80
+

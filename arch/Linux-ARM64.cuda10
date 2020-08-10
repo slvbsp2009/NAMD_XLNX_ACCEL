@@ -1,0 +1,10 @@
+# suppliment and override build definitions for CUDA 10
+
+# Just stick to major compute capabilities, GeForce probably does not matter
+
+CUDAGENCODE = \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_75,code=sm_75 \
+  -gencode arch=compute_75,code=compute_75
+

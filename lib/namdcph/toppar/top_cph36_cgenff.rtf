@@ -1,0 +1,141 @@
+*  --------------------------------------------------------------------------  *
+*          CGenFF: Topology for the Charmm General Force Field v. 2b8          *
+*                    for Small Molecule Drug Design                            *
+*  --------------------------------------------------------------------------  *
+*  Warning! The residues and patches contained herein may conflict with 
+*  existing CGenFF topologies.
+*
+36  1
+
+MASS  -1  HGP1       1.00800 H ! polar H
+MASS  -1  HGA3       1.00800 H ! alphatic proton, CH3
+MASS  -1  CG2O2     12.01100 C ! carbonyl C: esters, [neutral] carboxylic acids
+MASS  -1  CG2O3     12.01100 C ! carbonyl C: [negative] carboxylates
+MASS  -1  CG331     12.01100 C ! aliphatic C for methyl group (-CH3)
+MASS  -1  OG2D1     15.99940 O ! carbonyl O: amides, esters, [neutral] carboxylic acids, aldehydes, uera
+MASS  -1  OG2D2     15.99940 O ! carbonyl O: negative groups: carboxylates, carbonate
+MASS  -1  OG311     15.99940 O ! hydroxyl oxygen
+MASS  -1  HGP1D      1.00800 H ! polar H dummy
+
+!==============================================================================
+! Acetic acid
+!
+! Note that the atom naming scheme here is different from the standard force
+! field so that a consistent convention can be used for all carboxylates.
+!
+!==============================================================================
+RESI ACE          -1.00 ! C2H3O2 acetate, adapted from K. Kuczera
+GROUP
+ATOM C2   CG331   -0.37 !
+ATOM H21  HGA3     0.09 !      H21   O1 (-)
+ATOM H22  HGA3     0.09 !      |    /
+ATOM H23  HGA3     0.09 ! H22--C2--C1
+ATOM C1   CG2O3    0.62 !      |    \\
+ATOM O1   OG2D2   -0.76 !      H23    O2
+ATOM O2   OG2D2   -0.76 !
+BOND C1  O1  C1  C2
+BOND C2  H21 C2  H22 C2  H23
+DOUBLE C1 O2
+IMPR C1 O2 O1 C2
+IC  O1  C1  C2  H21 1.260 116.00    0.0 109.50 1.111
+IC  C1  H21 *C2 H22 0.000   0.00  120.0 108.40 1.111
+IC  C1  H21 *C2 H23 1.111   0.00 -120.0 108.40 1.111
+IC  C2  O1  *C1 O2  2.390 116.00  180.0 128.00 1.260
+
+PRES ACED         -1.00 ! C2H3O2 acetate w/dummy protons
+GROUP
+ATOM C2   CG331   -0.37
+ATOM H21  HGA3     0.09 !      H21   O1..HO1
+ATOM H22  HGA3     0.09 !      |    /
+ATOM H23  HGA3     0.09 ! H22--C2--C1 (-)
+ATOM C1   CG2O3    0.62 !      |    \\
+ATOM O1   OG2D2   -0.76 !      H23   O2..HO2
+ATOM HO1  HGP1D    0.00 !
+ATOM O2   OG2D2   -0.76
+ATOM HO2  HGP1D    0.00
+BOND O1 HO1 O2 HO2
+IC C2   C1   O1   HO1   0.0000  0.0000 180.0000  115.00  0.9600
+IC C2   C1   O2   HO2   0.0000  0.0000 180.0000  115.00  0.9600
+
+PRES ACE1          0.00 ! C2H4O2 acetic acid, protonated w/dummy proton
+GROUP
+ATOM C2   CG331   -0.30 !
+ATOM H21  HGA3     0.09 !      H21   O1--HO1
+ATOM H22  HGA3     0.09 !      |    /
+ATOM H23  HGA3     0.09 ! H22--C2--C1
+ATOM C1   CG2O2    0.75 !      |    \\
+ATOM O1   OG311   -0.60 !      H23   O2..HO2
+ATOM HO1  HGP1     0.43 !
+ATOM O2   OG2D1   -0.55
+ATOM HO2  HGP1D    0.00
+BOND O1 HO1 O2 HO2
+IC C2   C1   O1   HO1   0.0000  0.0000 180.0000  115.00  0.9600
+IC C2   C1   O2   HO2   0.0000  0.0000 180.0000  115.00  0.9600
+
+PRES ACE2          0.00 ! C2H4O2 acetic acid, protonated w/dummy proton
+GROUP
+ATOM C2   CG331   -0.30 !
+ATOM H21  HGA3     0.09 !      H21   O1..HO1
+ATOM H22  HGA3     0.09 !      |    //
+ATOM H23  HGA3     0.09 ! H22--C2--C1
+ATOM C1   CG2O2    0.75 !      |    \ 
+ATOM O1   OG2D1   -0.55 !      H23   O2--HO2
+ATOM HO1  HGP1D    0.00 !
+ATOM O2   OG311   -0.60
+ATOM HO2  HGP1     0.43
+BOND O1 HO1 O2 HO2
+IC C2   C1   O1   HO1   0.0000  0.0000 180.0000  115.00  0.9600
+IC C2   C1   O2   HO2   0.0000  0.0000 180.0000  115.00  0.9600
+
+PRES ACEH1        -1.00
+GROUP
+ATOM C2A  CG331   -0.30 !
+ATOM H21A HGA3     0.09 !       H21A   O1A--HO1A
+ATOM H22A HGA3     0.09 !       |     /
+ATOM H23A HGA3     0.09 ! H22A--C2A--C1A
+ATOM C1A  CG2O2    0.75 !       |     \\
+ATOM O1A  OG311   -0.60 !       H23A   O2A..HO2A
+ATOM HO1A HGP1     0.43 !
+ATOM O2A  OG2D1   -0.55
+ATOM HO2A HGP1D    0.00
+BOND O1A  HO1A O2A  HO2A
+BOND C1A  O1A  C1A  C2A
+BOND C2A  H21A C2A  H22A C2A  H23A
+DOUBLE C1A O2A
+IMPR C1A C2A O2A O1A
+
+PRES ACEH2        -1.00
+GROUP
+ATOM C2A  CG331   -0.30 !
+ATOM H21A HGA3     0.09 !       H21A   O1A..HO1A
+ATOM H22A HGA3     0.09 !       |     //
+ATOM H23A HGA3     0.09 ! H22A--C2A--C1A
+ATOM C1A  CG2O2    0.75 !       |     \ 
+ATOM O1A  OG2D1   -0.55 !       H23A   O2A--HO2A
+ATOM HO1A HGP1D    0.00 !
+ATOM O2A  OG311   -0.60
+ATOM HO2A HGP1     0.43
+BOND O1A  HO1A O2A  HO2A
+BOND C1A  O2A  C1A  C2A
+BOND C2A  H21A C2A  H22A C2A  H23A
+DOUBLE C1A O1A
+IMPR C1A C2A O1A O2A
+
+PRES ACEHD        -1.00
+GROUP
+ATOM C2A  CG331   -0.37 !
+ATOM H21A HGA3     0.09 !       H21A   O1A..HO1A
+ATOM H22A HGA3     0.09 !       |     /
+ATOM H23A HGA3     0.09 ! H22A--C2A--C1A (-)
+ATOM C1A  CG2O3    0.62 !       |     \\
+ATOM O1A  OG2D2   -0.76 !       H23A   O2A..HO2A
+ATOM HO1A HGP1D    0.00 !
+ATOM O2A  OG2D2   -0.76
+ATOM HO2A HGP1D    0.00
+BOND O1A HO1A O2A HO2A
+BOND C1A  O1A  C1A  C2A
+BOND C2A  H21A C2A  H22A C2A  H23A
+DOUBLE C1A O2A
+IMPR C1A O2A O1A C2A
+
+END

@@ -1,0 +1,84 @@
+* CGenFF derived force field parameters for acetic acid 
+*
+* WARNING! The contents of this file are INTENDED FOR EXAMPLE ONLY.
+* They are NEITHER supported NOR guaranteed as correct by the
+* University of Illinois Theoretical and Computational Biophysics
+* Group.
+*
+
+ATOMS 
+MASS  -1  HGA3       1.00800 ! alphatic proton, CH3
+MASS  -1  HGP1       1.00800 ! polar H
+MASS  -1  CG331     12.01100 ! aliphatic C for methyl group (-CH3)
+MASS  -1  CG2O2     12.01100 ! carbonyl C: esters, [neutral] carboxylic acids
+MASS  -1  CG2O3     12.01100 ! carbonyl C: [negative] carboxylates
+MASS  -1  OG2D1     15.99940 ! carbonyl O: amides, esters, [neutral] carboxylic acids, aldehydes, uera
+MASS  -1  OG2D2     15.99940 ! carbonyl O: negative groups: carboxylates, carbonate
+MASS  -1  OG311     15.99940 ! hydroxyl oxygen
+MASS  -1  HGP1D      1.00800 ! polar H dummy
+
+BONDS
+CG2O3  CG331   200.00     1.5220 ! PROT adm jr. 4/05/91, for asn,asp,gln,glu and cters
+CG2O3  OG2D2   525.00     1.2600 ! PROT adm jr. 7/23/91, acetic acid
+CG331  HGA3    322.00     1.1110 ! PROT alkane update, adm jr., 3/2/92
+CG2O2  CG331   200.00     1.5220 ! PROT adm jr. 5/02/91, acetic acid pure solvent
+CG2O2  OG2D1   750.00     1.2200 ! PROT adm jr. 5/02/91, acetic acid pure solvent; LIPID methyl acetate
+CG2O2  OG311   230.00     1.4000 ! PROT adm jr. 5/02/91, acetic acid pure solvent
+OG311  HGP1    545.00     0.9600 ! PROT EMB 11/21/89 methanol vib fit; og tested on MeOH EtOH,...
+! carboxylates
+HGP1D  OG2D2   545.00     0.9600 ! same as HGP1-OG311
+HGP1D  OG2D1   545.00     0.9600 ! same as HGP1-OG311
+
+ANGLES
+CG331  CG2O3  OG2D2    40.00    116.00   50.00   2.35300 ! PROT adm jr. 7/23/91, correction, ACETATE (KK)
+OG2D2  CG2O3  OG2D2   100.00    128.00   70.00   2.25870 ! PROT adm jr. 7/23/91, correction, ACETATE (KK)
+CG2O3  CG331  HGA3     33.00    109.50   30.00   2.16300 ! PROT adm jr. 4/05/91, for asn,asp,gln,glu and cters
+HGA3   CG331  HGA3     35.50    108.40    5.40   1.80200 ! PROT alkane update, adm jr., 3/2/92
+CG331  CG2O2  OG2D1    70.00    125.00   20.00   2.44200 ! PROT adm jr. 5/02/91, acetic acid pure solvent; LIPID methyl acetate
+CG331  CG2O2  OG311    55.00    110.50 ! PROT adm jr, 10/17/90, acetic acid vibrations
+OG2D1  CG2O2  OG311    50.00    123.00  210.00   2.26200 ! PROT adm jr, 10/17/90, acetic acid vibrations
+CG2O2  CG331  HGA3     33.00    109.50   30.00   2.16300 ! PROT adm jr. 5/02/91, acetic acid pure solvent
+CG2O2  OG311  HGP1     55.00    115.00 ! PROT adm jr. 5/02/91, acetic acid pure solvent
+! carboxylates
+CG2O3  OG2D2  HGP1D    55.00    115.00  ! same as CG2O2-OG311-HGP1
+CG2O2  OG2D1  HGP1D    55.00    115.00  ! same as CG2O2-OG311-HGP1
+
+DIHEDRALS
+OG2D2  CG2O3  CG331  HGA3       0.0500  6   180.00 ! PROT For side chains of asp,asn,glu,gln, (n=6) from KK(LK)
+OG2D1  CG2O2  CG331  HGA3       0.0000  6   180.00 ! PROT adm jr. 3/19/92, from lipid methyl acetate; LIPID acetic Acid
+OG311  CG2O2  CG331  HGA3       0.0000  6   180.00 ! PROT adm jr. 3/19/92, from lipid methyl acetate
+CG331  CG2O2  OG311  HGP1       2.0500  2   180.00 ! PROT adm jr, 10/17/90, acetic Acid C-Oh rotation barrier
+OG2D1  CG2O2  OG311  HGP1       2.0500  2   180.00 ! PROT adm jr, 10/17/90, acetic Acid C-Oh rotation barrier
+! carboxylates
+CG331  CG2O3  OG2D2  HGP1D      0.8800  2   180.00 ! fit to ACEP pmf
+CG331  CG2O3  OG2D2  HGP1D      0.8800  1     0.00 !
+CG331  CG2O2  OG2D1  HGP1D      0.8800  2   180.00
+CG331  CG2O2  OG2D1  HGP1D      0.8800  1     0.00
+CG321  CG2O3  OG2D2  HGP1D      0.8800  2   180.00
+CG321  CG2O3  OG2D2  HGP1D      0.8800  1     0.00
+CG321  CG2O2  OG2D1  HGP1D      0.8800  2   180.00
+CG321  CG2O2  OG2D1  HGP1D      0.8800  1     0.00
+OG2D2  CG2O3  OG2D2  HGP1D      0.0000  2   180.00 ! dummy torsion 
+OG311  CG2O2  OG2D1  HGP1D      0.0000  2   180.00
+! missing from cgenff, which doesn't notice proximal methyl groups
+OG311  CG2O2  CG321  CG331      0.0000  6   180.00 ! same as OG311-CG2O2-CG321-CG311
+
+IMPROPERS
+CG2O3  OG2D2  OG2D2  CG331     96.0000  0     0.00 ! PROT 90.0->96.0 acetate, single impr (KK) correct conversion from wildcard CC X X CT3 which itself may or may not be correct
+CG2O2  CG331  OG2D1  OG311     65.0000  0     0.00 ! ACEH, acetic acid, xxwy
+! carboxylates
+CG2O2  CG331  OG311  OG2D1     65.0000  0     0.00 ! same as CG2O2-CG311-OG2D1-OG311
+CG2O2  CG321  OG311  OG2D1     65.0000  0     0.00 ! same as CG2O2-CG311-OG2D1-OG311
+
+NONBONDED
+HGA3     0.0       -0.0240     1.3400 ! alkane, yin and mackerell, 4/98
+HGP1     0.0       -0.0460     0.2245 ! polar H
+CG331    0.0       -0.0780     2.0500   0.0 -0.01 1.9 ! alkane (CT3), 4/98, yin, adm jr; Rmin/2 modified from 2.04 to 2.05
+CG2O2    0.0       -0.0980     1.7000 ! methyl acetate update viv 12/29/06
+CG2O3    0.0       -0.0700     2.0000 ! acetate heat of solvation
+OG2D1    0.0       -0.1200     1.7000   0.0 -0.12 1.40 ! carbonyl. Also consistent with adm, acetaldehyde, 11/08
+OG2D2    0.0       -0.1200     1.7000 ! PROT
+OG311    0.0       -0.1921     1.7650 ! og MeOH and EtOH 1/06 (was -0.1521 1.7682)
+HGP1D    0.0       -0.0000     0.2245 ! dummy, Rmin/2 from HGP1
+
+END

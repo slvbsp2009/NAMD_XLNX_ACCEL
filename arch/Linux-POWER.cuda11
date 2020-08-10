@@ -1,0 +1,15 @@
+# suppliment and override build definitions for CUDA 11
+
+# CUDA 11 no longer supports compute capability 3.0
+# CUDA 11 has deprecated compute capability 3.x and 5.x
+
+CUDAGENCODE = \
+  -gencode arch=compute_35,code=sm_35 \
+  -gencode arch=compute_37,code=sm_37 \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_61,code=sm_61 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_75,code=sm_75 \
+  -gencode arch=compute_80,code=sm_80 \
+  -gencode arch=compute_80,code=compute_80
+

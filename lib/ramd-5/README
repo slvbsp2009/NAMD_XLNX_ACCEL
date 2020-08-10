@@ -1,0 +1,45 @@
+***************************************************************************
+# Random Acceleration Molecular Dynamics (RAMD)                           *
+# Implementation tested on NAMD v2.10 and 2.12                            *
+# July 2018                                                               *
+#                                                                         *
+# Copyright (c) 2018, HITS gGmbH                                          *
+# (Heidelberg Institute for Theoretical Studies), Germany                 * 
+# Authors:  Vlad Cojocaru, Stefan Richter, Daria Kokh, Rebecca Wade       *
+# Email: mcmsoft@h-its.org                                                *
+#**************************************************************************
+
+
+
+---------------Random Acceleration Molecular Dynamics---------------------
+
+RAMD 5.0 implementation tested in NAMD 2.6, 2.7b2, 2.10 and 2.12
+
+Note that to be able to estimate dissociation rate constants (koff rates) 
+using the tauRAMD method as described in the following publication :
+
+   Kokh et al., J. Chem. Theory Comput. (2018), DOI: 10.1021/acs.jctc.8b00230
+   https://pubs.acs.org/doi/full/10.1021/acs.jctc.8b00230
+
+   one needs to download additional scripts for processing the RAMD 
+   trajectories from the HITS website:
+   https://www.h-its.org/downloads/ramd/
+
+
+
+
+Distribution contains:
+
+1. scripts	   the latest version of the tcl scripts for running RAMD 
+                   simulations
+2. examples/1WDHI  example for execution of RAMD simulations; contains 
+                   input files and bash script "RAMD-force.sh"
+   examples/DCL    example for execution of RAMD simulation; converted 
+                   from RAMD-4.1 release
+3. TRJ-Analysis-R  (if downloaded from 
+                   https://www.h-its.org/downloads/ramd/)   
+                   R script for computing relative residence times from 
+                   RAMD simulations (tauTAMD method); application  example 
+                   for HSP90 
+
+

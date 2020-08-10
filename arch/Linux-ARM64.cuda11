@@ -1,0 +1,11 @@
+# suppliment and override build definitions for CUDA 11
+
+# Just stick to major compute capabilities, GeForce probably does not matter
+
+CUDAGENCODE = \
+  -gencode arch=compute_60,code=sm_60 \
+  -gencode arch=compute_70,code=sm_70 \
+  -gencode arch=compute_75,code=sm_75 \
+  -gencode arch=compute_80,code=sm_80 \
+  -gencode arch=compute_80,code=compute_80
+

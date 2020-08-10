@@ -1,0 +1,17 @@
+# set CUDA base build definitions here
+# must also include *.cuda# file for major version #
+
+CUDADIR=/usr/local/cuda/
+CUDAINCL=-I$(CUDADIR)/include
+CUBDIR=.rootdir/cub
+CUBINCL=-I$(CUBDIR)
+CUDALIB=-L$(CUDADIR)/lib64 -lcufft -lcudart -lrt
+CUDASODIR=$(CUDADIR)/lib64
+LIBCUDARTSO=
+CUDAFLAGS=-DNAMD_CUDA
+CUDAOBJS=$(CUDAOBJSRAW)
+CUDA=$(CUDAFLAGS) -I. $(CUBINCL) $(CUDAINCL) 
+CUDACC=$(CUDADIR)/bin/nvcc -Xcompiler "-m64"
+
+CUDACCOPTS=-O3 --maxrregcount 48 $(CUDAGENCODE) $(CUDA) -use_fast_math
+
